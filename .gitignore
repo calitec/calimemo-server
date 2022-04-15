@@ -1,0 +1,4 @@
+node_modules
+*.sqlite
+# Local Netlify folder
+.netlify
