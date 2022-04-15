@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-app.enable("trust proxy");
+// app.enable("trust proxy");
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
   session({
@@ -61,9 +61,10 @@ app.use(
     proxy: true,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production" ? true : false,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      // domain: process.env.NODE_ENV === "production" && ".herokuapp.com",
+      secure: false,
+      domain: process.env.NODE_ENV === "production" && ".calimemo.info",
+      // secure: process.env.NODE_ENV === "production" ? true : false,
+      // sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   })
 );
