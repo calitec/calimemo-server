@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(helmet({ contentSecurityPolicy: false }));
   app.use(
     cors({
-      origin: "https://calimemo.herokuapp.com",
+      origin: "http://www.calimemo.info",
       credentials: true,
     })
   );
