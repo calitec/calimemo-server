@@ -20,14 +20,13 @@ module.exports = () => {
               reason: "존재하지 않는 아이디 입니다.",
             });
           }
-          if (username == "test123") {
-            return done(null, user);
-          }
           const result = await bcrypt.compare(password, user.password);
           if (result) {
             return done(null, user);
           }
-          return done(null, false, { reason: "비밀번호가 틀렸습니다." });
+          return done(null, false, {
+            reason: "아이디 또는 비밀번호를 잘못 입력 하였습니다.",
+          });
         } catch (error) {
           console.error(error);
           return done(error);

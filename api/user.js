@@ -32,7 +32,7 @@ router.post("/login", isNotLoggedIn, async (req, res, next) => {
     return passport.authenticate("local", (passportError, user, info) => {
       // 인증 실패 or 유저 데이터 가드
       if (passportError || !user) {
-        res.status(400).json({ message: info.reason });
+        res.status(401).json({ message: info.reason });
         return;
       }
 

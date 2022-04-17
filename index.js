@@ -12,15 +12,18 @@ const cookieParser = require("cookie-parser");
 const userAPIRouter = require("./api/user");
 const dateAPIRouter = require("./api/date");
 const placeAPIRouter = require("./api/place");
+const bcrypt = require("bcrypt");
 
 dotenv.config();
 const db = require("./models");
 const app = express();
 
 db.sequelize.sync().then(async () => {
+  const password = "test123";
+  const hashedPassword = await bcrypt.hash(password, 12);
   await db.User.create({
     username: "test123",
-    password: "test123",
+    password: hashedPassword,
   });
 });
 passportConfig();
